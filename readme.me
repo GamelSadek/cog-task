@@ -1,0 +1,59 @@
+Task
+this task i made accourding to a certain senario i will descripe to you.
+
+Getting Started
+* this is a node.js project incoming steps will descripe how to make it work: 
+1- "npm install"
+2- "node start" 
+3- run another instance with " node ./dist/observer.js "
+
+Prerequisites
+1- create user : call endpoint post" localhost:3000/user " with body ex: 
+    {
+	"username":"Gamel"
+    }
+2-  create pet : call endpoint post" localhost:3000/pet " with body ex: 
+    {
+	"name":"Viky",
+	"ownerId":"5eab5998d37e4611043fe757"// this is the user id of created user ,
+	"status":"available"
+}
+3- open auction on the created pet and give teh auction expirtaion date 
+during this date users can make Bids by calling endpoint 
+post " localhost:3000/pet/openAuction/5eab59a9d37e4611043fe758" // this is the id of created pet 
+{
+	"exDate":"2020-04-30T23:25:30.127Z"
+}
+
+**fisrt Challenge ** 
+
+* fisrt task*
+4- user can make a bid on a pet by call endponit post"localhost:3000/pet/bid" with body ex:
+{
+	"userName": "John Doe",
+	"petId":"5eab59a9d37e4611043fe758",// created pet
+	"bidAmount":100
+}
+
+* second task *
+5- pet owner can  list all bids by call endpoint post"localhost:3000/user/bids" with body ex :
+{
+	"petId":"5ea8bed797c01c24d4fde7b0",
+	"ownerId":"5ea8b307db2d6b4c37cb331d"
+}
+
+** second Challenge ** 
+i made another instatnce listenning on any created aucation and put it 
+in queue when it's expiration date comes it calculates the bids winner and loser
+
+6- to show the bid winner and loser call endpoint get"localhost:3000/pet//bid/winner/5ea9ff46208e8b39f80f5169" this is the id of the created bid
+
+
+Running the tests
+i user jest for unit test and mongodb-memory-server 
+
+Built With
+node.js - The web framework used
+inversify - Dependency injection  Management
+mongodb - database 
+redis - to save in the memory the created queue 
